@@ -1,0 +1,18 @@
+{
+  "name": "scope-styles",
+  "version": "0.1.0",
+  "description": "converts inline style objects into scoped css",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "base-x": "^1.0.1",
+    "object-hash": "^0.9.1"
+  },
+  "devDependencies": {
+    "tape": "^4.2.1"
+  }
+}

@@ -1,0 +1,18 @@
+.foo_4c06c {
+  font-weight: bold
+}
+.bar_4c06c {
+  color: blue;
+  font-size: 15px;
+  background-color: #fff;
+  transition: width 500ms ease
+}
+.bar_4c06c:after {
+  color: green;
+  content: ''
+}
+@media (max-width: 600px) {
+.bar_4c06c {
+  color: orange
+}
+}
