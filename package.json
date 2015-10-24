@@ -8,13 +8,15 @@
   "bugs": "https://github.com/rtsao/scope-styles/issues",
   "main": "index.js",
   "scripts": {
-    "test": "node test/index.js"
+    "test": "node test/index.js",
+    "cover": "istanbul cover test/index.js"
   },
   "dependencies": {
     "base-x": "^1.0.1",
     "object-hash": "^0.9.1"
   },
   "devDependencies": {
+    "istanbul": "^0.4.0",
     "tape": "^4.2.1"
   },
   "license": "MIT"
