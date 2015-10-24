@@ -1,5 +1,9 @@
 # scope-styles
 
+[![build status][build-badge]][build-href]
+[![coverage status][coverage-badge]][coverage-href]
+[![dependencies status][deps-badge]][deps-href]
+
 `scope-styles` is a utility that converts inline style objects into scoped css, which can be either embedded into the page or extracted out. Works with Radium-compatibile inline style objects.
 
 # usage
@@ -84,3 +88,10 @@ document.body.appendChild(div2);
   </body>
 </html>
 ```
+
+[build-badge]: https://travis-ci.org/rtsao/scope-styles.svg?branch=master
+[build-href]: https://travis-ci.org/rtsao/scope-styles
+[coverage-badge]: https://coveralls.io/repos/rtsao/scope-styles/badge.svg?branch=master&service=github
+[coverage-href]: https://coveralls.io/github/rtsao/scope-styles?branch=master
+[deps-badge]: https://david-dm.org/rtsao/scope-styles.svg
+[deps-href]: https://david-dm.org/rtsao/scope-styles
