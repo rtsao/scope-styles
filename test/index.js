@@ -15,8 +15,8 @@ test('basic functionality', function(t) {
   t.ok(result.exports, 'exports exists');
   t.ok(result.exports.foo, 'class foo exists in exports');
   t.ok(result.exports.bar, 'class bar exists in exports');
-  t.equal(result.exports.foo, 'foo_4c06c', 'foo is correctly scoped');
-  t.equal(result.exports.bar, 'bar_4c06c', 'bar is correctly scoped');
+  t.equal(result.exports.foo, 'foo_4gn20', 'foo is correctly scoped');
+  t.equal(result.exports.bar, 'bar_4gn20', 'bar is correctly scoped');
   t.end();
 });
 
