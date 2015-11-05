@@ -1,6 +1,6 @@
 {
   "name": "scope-styles",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "converts inline style objects into scoped css",
   "author": "Ryan Tsao <ryan.j.tsao@gmail.com>",
   "repository": "git@github.com:rtsao/scope-styles.git",
