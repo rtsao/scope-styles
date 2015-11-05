@@ -36,17 +36,18 @@ var styles = {
 ```javascript
 var scopeStyles = require('scope-styles');
 var insertCss = require('insert-css');
+
 var styles = require('./styles');
-
 var scoped = scopeStyles(styles);
-var css = scopeStyles.getCss(scoped);
 
+// create elements
 var div1 = document.createElement('div');
 div1.className = scoped.foo;
 var div2 = document.createElement('div');
 div2.className = scoped.bar;
 
 // inject scoped css into page
+var css = scopeStyles.getCss(scoped);
 insertCss(css);
 
 // render
