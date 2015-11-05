@@ -1,21 +1,22 @@
 'use strict';
 
-var hashSuffix = require('./hash');
-var dashify = require('./inline-prop-to-css');
+var hashSuffix = require('./lib/hash');
+var dashify = require('./lib/inline-prop-to-css');
+var cssKey = require('./lib/css-symbol');
 
 module.exports = scopeStyles;
+module.exports.getCss = require('./get-css');
 
 function scopeStyles(obj) {
   var suffix = hashSuffix(obj);
+  var result = {};
+  result[cssKey] = '';
   return Object.keys(obj).reduce(function(acc, key) {
     var scoped = processClass(obj[key], key, suffix);
-    acc.exports[key] = scoped.scopedName;
-    acc.css += scoped.css;
+    acc[key] = scoped.scopedName;
+    acc[cssKey] += scoped.css;
     return acc;
-  }, {
-    css: '',
-    exports: {}
-  });
+  }, result);
 }
 
 function processClass(obj, className, suffix) {

@@ -38,15 +38,13 @@ var scopeStyles = require('scope-styles');
 var insertCss = require('insert-css');
 var styles = require('./styles');
 
-var result = scopeStyles(styles);
-var fooScoped = result.exports.foo;
-var barScoped = result.exports.bar;
-var css = result.css;
+var scoped = scopeStyles(styles);
+var css = scopeStyles.getCss(scoped);
 
 var div1 = document.createElement('div');
-div1.className = fooScoped;
+div1.className = scoped.foo;
 var div2 = document.createElement('div');
-div2.className = barScoped;
+div2.className = scoped.bar;
 
 // inject scoped css into page
 insertCss(css);
