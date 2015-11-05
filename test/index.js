@@ -7,7 +7,6 @@ var scopeStyles = require('../');
 var getCss = scopeStyles.getCss;
 
 test('basic functionality', function(t) {
-
   var basicTest = getFixtures('basic');
   var result = scopeStyles(basicTest.source);
 
@@ -19,7 +18,6 @@ test('basic functionality', function(t) {
   t.equal(result.bar, 'bar_4gn20', 'bar is correctly scoped');
   t.end();
 });
-
 
 function getFixtures(name) {
   var expectedPath = path.join(__dirname, name + '.expected.css');
