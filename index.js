@@ -65,6 +65,6 @@ function makeClass(name, suffix, props, subname) {
 
 function inlineStyle(obj) {
   return Object.keys(obj).map(function(prop) {
-    return dashify(prop).concat(': ').concat(obj[prop])
-  }).join(';\n  ');
+    return dashify(prop).concat(': ').concat(obj[prop]).concat(';');
+  }).join('\n  ');
 }
