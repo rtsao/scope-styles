@@ -4,7 +4,7 @@
 [![coverage status][coverage-badge]][coverage-href]
 [![dependencies status][deps-badge]][deps-href]
 
-`scope-styles` is a utility that converts inline style objects into scoped css, which can be either embedded into the page or extracted out. Works with Radium-compatibile inline style objects.
+`scope-styles` is a utility that converts inline style objects into scoped css, which can be either embedded into the page or extracted into an external css bundle. Works with [Radium](https://github.com/FormidableLabs/radium)-compatibile inline style objects. Pairs well with [inline-style-prefixer](https://github.com/rofrischmann/inline-style-prefixer).
 
 # usage
 
