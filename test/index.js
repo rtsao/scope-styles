@@ -19,6 +19,16 @@ test('basic functionality', function(t) {
   t.end();
 });
 
+test('no hash suffix on classnames', function(t) {
+  var noHashTest = getFixtures('no-hash');
+  var result = scopeStyles({hash: false}, noHashTest.source);
+
+  t.equal(getCss(result), noHashTest.expected, 'css matches expected');
+  t.equal(result.foo, 'foo', 'foo is correctly scoped');
+  t.equal(result.bar, 'bar', 'bar is correctly scoped');
+  t.end();
+});
+
 function getFixtures(name) {
   var expectedPath = path.join(__dirname, name + '.expected.css');
   var sourcePath = './' + name + '.source.js';
