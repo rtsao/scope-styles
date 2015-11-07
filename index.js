@@ -7,8 +7,12 @@ var cssKey = require('./lib/css-symbol');
 module.exports = scopeStyles;
 module.exports.getCss = require('./get-css');
 
-function scopeStyles(obj) {
-  var suffix = hashSuffix(obj);
+function scopeStyles(config, obj) {
+  if (arguments.length < 2) {
+    obj = config;
+    config = {hash: true};
+  }
+  var suffix = config.hash ? hashSuffix(obj) : '';
   var result = {};
   result[cssKey] = '';
   return Object.keys(obj).reduce(function(acc, key) {
