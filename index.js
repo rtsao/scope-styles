@@ -39,7 +39,6 @@ function processClass(obj, className, suffix) {
 }
 
 function processMediaQuery(obj, className, suffix) {
-  /* TODO: deal with scoping suffix */
   var result = partitionProps(obj);
   var nested = result.nested;
   var nestedClasses = Object.keys(nested).map(function(name) {
