@@ -16,7 +16,8 @@ function scopeStyles(config, obj) {
   var result = {};
   result[cssKey] = '';
   return Object.keys(obj).reduce(function(acc, key) {
-    var scoped = processClass(obj[key], key, suffix);
+    var fn = isMediaQuery(key) ? processMediaQuery : processClass;
+    var scoped = fn(obj[key], key, suffix);
     acc[key] = scoped.scopedName;
     acc[cssKey] += scoped.css;
     return acc;
@@ -27,7 +28,7 @@ function processClass(obj, className, suffix) {
   var result = partitionProps(obj);
   var nested = result.nested;
   var nestedClasses = Object.keys(nested).map(function(name) {
-    var fn = isMediaquery(name) ? makeMediaQuery : makeClass;
+    var fn = isMediaQuery(name) ? makeMediaQuery : makeClass;
     return fn(className, suffix, nested[name], name);
   }).join('');
 
@@ -35,6 +36,20 @@ function processClass(obj, className, suffix) {
     css: makeClass(className, suffix, result.props) + nestedClasses,
     scopedName: className + suffix
   };
+}
+
+function processMediaQuery(obj, className, suffix) {
+  /* TODO: deal with scoping suffix */
+  var result = partitionProps(obj);
+  var nested = result.nested;
+  var nestedClasses = Object.keys(nested).map(function(name) {
+    return makeClass(name, suffix, nested[name]);
+  }).join('');
+
+  return {
+    css: className + ' {\n' + nestedClasses + '}\n',
+    scopedName: className + suffix
+  }
 }
 
 function partitionProps(propsObj) {
@@ -58,7 +73,7 @@ function makeMediaQuery(name, suffix, props, media) {
   return media + ' {\n' + makeClass(name, suffix, props) + '}';
 }
 
-function isMediaquery(key) {
+function isMediaQuery(key) {
   return key.substring(0, 6) === '@media';
 }
 
