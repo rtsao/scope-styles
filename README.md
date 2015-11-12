@@ -3,6 +3,7 @@
 [![build status][build-badge]][build-href]
 [![coverage status][coverage-badge]][coverage-href]
 [![dependencies status][deps-badge]][deps-href]
+[![code climate gpa][code-climate-badge]][code-climate-href]
 
 `scope-styles` is a utility that converts inline style objects into scoped css, which can be either embedded into the page or extracted into an external css bundle. Works with [Radium](https://github.com/FormidableLabs/radium)-compatibile inline style objects. Pairs well with [inline-style-prefixer](https://github.com/rofrischmann/inline-style-prefixer).
 
@@ -94,3 +95,5 @@ document.body.appendChild(div2);
 [coverage-href]: https://coveralls.io/github/rtsao/scope-styles?branch=master
 [deps-badge]: https://david-dm.org/rtsao/scope-styles.svg
 [deps-href]: https://david-dm.org/rtsao/scope-styles
+[code-climate-badge]: https://codeclimate.com/github/rtsao/scope-styles/badges/gpa.svg
+[code-climate-href]: https://codeclimate.com/github/rtsao/scope-styles
