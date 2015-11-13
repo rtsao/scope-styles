@@ -2,6 +2,7 @@
   "name": "scope-styles",
   "version": "0.2.0",
   "description": "converts inline style objects into scoped css",
+  "keywords": ["css", "scope", "styles", "inline", "radium"],
   "author": "Ryan Tsao <ryan.j.tsao@gmail.com>",
   "repository": "git@github.com:rtsao/scope-styles.git",
   "homepage": "https://github.com/rtsao/scope-styles",
