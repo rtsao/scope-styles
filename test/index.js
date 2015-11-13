@@ -29,6 +29,13 @@ test('no hash suffix on classnames', function(t) {
   t.end();
 });
 
+test('supports media queries', function(t) {
+  var mediaQueryTest = getFixtures('media-query');
+  var result = scopeStyles(mediaQueryTest.source);
+  t.equal(getCss(result), mediaQueryTest.expected, 'css matches expected');
+  t.end();
+});
+
 function getFixtures(name) {
   var expectedPath = path.join(__dirname, name + '.expected.css');
   var sourcePath = './' + name + '.source.js';
