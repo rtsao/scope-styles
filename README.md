@@ -15,19 +15,18 @@ module.exports = styles;
 
 var styles = {
   foo: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontSize: '15px'
   },
   bar: {
-    color: 'blue',
-    fontSize: '15px',
-    backgroundColor: '#fff',
-    transition: 'width 500ms ease',
-    ':after': {
-      color: 'green',
-      content: "''"
+    color: 'red',
+    backgroundColor: '#ccc',
+    transition: 'all 500ms ease',
+    ':hover': {
+      color: 'green'
     },
     '@media (max-width: 600px)': {
-      color: 'orange'
+      color: 'blue'
     }
   }
 };
@@ -62,29 +61,28 @@ document.body.appendChild(div2);
 <html>
   <head>
     <style>
-      .foo_4c06c {
-        font-weight: bold
+      .foo_1ctUW {
+        font-weight: bold;
+        font-size: 15px
       }
-      .bar_4c06c {
-        color: blue;
-        font-size: 15px;
-        background-color: #fff;
-        transition: width 500ms ease
+      .bar_1ctUW {
+        color: red;
+        background-color: #ccc;
+        transition: all 500ms ease
       }
-      .bar_4c06c:after {
-        color: green;
-        content: ''
+      .bar_1ctUW:hover {
+        color: green
       }
       @media (max-width: 600px) {
-      .bar_4c06c {
-        color: orange
+      .bar_1ctUW {
+        color: blue
       }
       }
     </style>
   </head>
   <body>
-    <div class="foo_4c06c"></div>
-    <div class="bar_4c06c"></div>
+    <div class="foo_1ctUW"></div>
+    <div class="bar_1ctUW"></div>
   </body>
 </html>
 ```
