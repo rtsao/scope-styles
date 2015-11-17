@@ -27,7 +27,7 @@ function processClass(obj, className, suffix) {
   var result = partitionProps(obj);
   var nested = result.nested;
   var nestedClasses = Object.keys(nested).map(function(name) {
-    var fn = isMediaquery(name) ? makeMediaQuery : makeClass;
+    var fn = isMediaQuery(name) ? makeMediaQuery : makeClass;
     return fn(className, suffix, nested[name], name);
   }).join('');
 
@@ -48,17 +48,14 @@ function partitionProps(propsObj) {
       acc[dest][key] = val;
     }
     return acc;
-  }, {
-    props: {},
-    nested: {}
-  });
+  }, {props: {}, nested: {}});
 }
 
 function makeMediaQuery(name, suffix, props, media) {
   return media + ' {\n' + makeClass(name, suffix, props) + '}';
 }
 
-function isMediaquery(key) {
+function isMediaQuery(key) {
   return key.substring(0, 6) === '@media';
 }
 

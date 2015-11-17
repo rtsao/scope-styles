@@ -3,39 +3,47 @@
 var fs = require('fs');
 var path = require('path');
 var test = require('tape');
+
 var scopeStyles = require('../');
 var getCss = scopeStyles.getCss;
 
-test('basic functionality', function(t) {
-  var basicTest = getFixtures('basic');
-  var result = scopeStyles(basicTest.source);
+var tests = [
+  {
+    name: 'basic'
+  },
+  {
+    name: 'no-hash',
+    opts: {hash: false}
+  }
+];
 
-  t.equal(getCss(result), basicTest.expected, 'css matches expected');
-  t.ok(result, 'exports exists');
-  t.ok(result.foo, 'class foo exists in exports');
-  t.ok(result.bar, 'class bar exists in exports');
-  t.equal(result.foo, 'foo_4gn20', 'foo is correctly scoped');
-  t.equal(result.bar, 'bar_4gn20', 'bar is correctly scoped');
-  t.end();
-});
+tests.forEach(testFromConfig);
 
-test('no hash suffix on classnames', function(t) {
-  var noHashTest = getFixtures('no-hash');
-  var result = scopeStyles({hash: false}, noHashTest.source);
+function testFromConfig(config) {
+  var fixtures = getFixtures(config.name);
+  runTest(config.name, fixtures.source, fixtures.expected, config.opts);
+}
 
-  t.equal(getCss(result), noHashTest.expected, 'css matches expected');
-  t.equal(result.foo, 'foo', 'foo is correctly scoped');
-  t.equal(result.bar, 'bar', 'bar is correctly scoped');
-  t.end();
-});
+function runTest(name, source, expected, opts) {
+  test('test ' + name, function t(assert) {
+    var result = opts ? scopeStyles(opts, source) : scopeStyles(source);
+    assert.equal(getCss(result), expected.css, 'css matches expected');
+    assert.deepEqual(result, expected.json, 'object matches expected');
+    assert.end();
+  });
+}
 
 function getFixtures(name) {
-  var expectedPath = path.join(__dirname, name + '.expected.css');
   var sourcePath = './' + name + '.source.js';
+  var jsonPath = path.join(__dirname, name + '.expected.json');
+  var cssPath = path.join(__dirname, name + '.expected.css');
 
   return {
     source: require(sourcePath),
-    expected: removeTrailingNewline(fs.readFileSync(expectedPath, 'utf8'))
+    expected: {
+      json: require(jsonPath),
+      css: removeTrailingNewline(fs.readFileSync(cssPath, 'utf8'))
+    }
   }
 }
 
