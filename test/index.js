@@ -12,6 +12,9 @@ var tests = [
     name: 'basic'
   },
   {
+    name: 'nest-inside-media'
+  },
+  {
     name: 'no-hash',
     opts: {hash: false}
   }
@@ -42,11 +45,7 @@ function getFixtures(name) {
     source: require(sourcePath),
     expected: {
       json: require(jsonPath),
-      css: removeTrailingNewline(fs.readFileSync(cssPath, 'utf8'))
+      css: fs.readFileSync(cssPath, 'utf8')
     }
   }
-}
-
-function removeTrailingNewline(str) {
-  return str.substring(0, str.length - 1);
 }
