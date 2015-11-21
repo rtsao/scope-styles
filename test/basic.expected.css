@@ -1,18 +1,18 @@
-.foo_4gn20 {
+.foo_2yRvVh {
   font-weight: bold
 }
-.bar_4gn20 {
+.bar_2yRvVh {
   color: blue;
   font-size: 15px;
   background-color: #fff;
   transition: width 500ms ease
 }
-.bar_4gn20:after {
+.bar_2yRvVh:after {
   color: green;
   content: ''
 }
 @media (max-width: 600px) {
-.bar_4gn20 {
+.bar_2yRvVh {
   color: orange
 }
 }

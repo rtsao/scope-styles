@@ -2,7 +2,13 @@
   "name": "scope-styles",
   "version": "0.2.0",
   "description": "converts inline style objects into scoped css",
-  "keywords": ["css", "scope", "styles", "inline", "radium"],
+  "keywords": [
+    "css",
+    "scope",
+    "styles",
+    "inline",
+    "radium"
+  ],
   "author": "Ryan Tsao <ryan.j.tsao@gmail.com>",
   "repository": "git@github.com:rtsao/scope-styles.git",
   "homepage": "https://github.com/rtsao/scope-styles",
@@ -14,9 +20,9 @@
     "travis-test": "npm run cover && ((cat coverage/lcov.info | coveralls) || exit 0)"
   },
   "dependencies": {
-    "base-x": "^1.0.1",
-    "es6-symbol": "^3.0.1",
-    "object-hash": "^0.9.1"
+    "base62": "^1.1.0",
+    "es-symbol": "^1.1.2",
+    "string-hash": "^1.1.0"
   },
   "devDependencies": {
     "coveralls": "^2.11.4",
