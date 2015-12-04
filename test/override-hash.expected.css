@@ -1,0 +1,18 @@
+.foo_hello {
+  font-weight: bold
+}
+.bar_hello {
+  color: blue;
+  font-size: 15px;
+  background-color: #fff;
+  transition: width 500ms ease
+}
+.bar_hello:after {
+  color: green;
+  content: ''
+}
+@media (max-width: 600px) {
+.bar_hello {
+  color: orange
+}
+}

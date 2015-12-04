@@ -3,19 +3,22 @@
 var hashSuffix = require('./lib/hash');
 var dashify = require('./lib/inline-prop-to-css');
 var cssKey = require('./lib/css-symbol');
+var hashKey = require('./lib/hash-symbol');
 var arrayConcat = Array.prototype.concat;
 
 module.exports = scopeStyles;
 module.exports.getCss = require('./get-css');
+module.exports.getHash = require('./get-hash');
 
 function scopeStyles(config, obj) {
   if (arguments.length < 2) {
     obj = config;
-    config = {hash: true};
+    config = {hash: hashSuffix(obj)};
   }
-  var suffix = config.hash ? hashSuffix(obj) : '';
+  var suffix = config.hash ? config.hash : '';
   var result = {};
   result[cssKey] = '';
+  result[hashKey] = suffix;
   return Object.keys(obj).reduce(function(acc, key) {
     var scoped = processObj(key + suffix, obj[key]);
     acc[key] = key + suffix;

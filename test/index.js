@@ -17,6 +17,10 @@ var tests = [
   {
     name: 'no-hash',
     opts: {hash: false}
+  },
+  {
+    name: 'override-hash',
+    opts: {hash: '_hello'}
   }
 ];
 
