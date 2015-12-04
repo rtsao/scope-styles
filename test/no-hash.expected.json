@@ -1,4 +1,7 @@
-{
-  "foo": "foo",
-  "bar": "bar"
+{ 
+  "object": {
+    "foo": "foo",
+    "bar": "bar"
+  },
+  "hash": ""
 }

@@ -1,4 +1,7 @@
 {
-  "foo": "foo_2yRvVh",
-  "bar": "bar_2yRvVh"
+  "object": {
+    "foo": "foo_2yRvVh",
+    "bar": "bar_2yRvVh"
+  },
+  "hash": "_2yRvVh"
 }

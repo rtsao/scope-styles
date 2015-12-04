@@ -1,3 +1,6 @@
-{
-  "foo": "foo_lkEWA"
+{ 
+  "object": {
+    "foo": "foo_lkEWA"
+  },
+  "hash": "_lkEWA"
 }

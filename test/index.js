@@ -6,50 +6,52 @@ var test = require('tape');
 
 var scopeStyles = require('../');
 var getCss = scopeStyles.getCss;
+var getHash = scopeStyles.getHash;
 
 var tests = [
-  {
-    name: 'basic'
-  },
-  {
-    name: 'nest-inside-media'
-  },
-  {
-    name: 'no-hash',
-    opts: {hash: false}
-  },
-  {
-    name: 'override-hash',
-    opts: {hash: '_hello'}
-  }
+  'basic',
+  'nest-inside-media',
+  'no-hash',
+  'override-hash'
 ];
 
-tests.forEach(testFromConfig);
+tests.forEach(testFromName);
 
-function testFromConfig(config) {
-  var fixtures = getFixtures(config.name);
-  runTest(config.name, fixtures.source, fixtures.expected, config.opts);
+function testFromName(name) {
+  var fixtures = getFixtures(name);
+  runTest(name, fixtures.source, fixtures.expected, fixtures.opts);
 }
 
 function runTest(name, source, expected, opts) {
   test('test ' + name, function t(assert) {
     var result = opts ? scopeStyles(opts, source) : scopeStyles(source);
     assert.equal(getCss(result), expected.css, 'css matches expected');
-    assert.deepEqual(result, expected.json, 'object matches expected');
+    assert.deepEqual(result, expected.json.object, 'object matches expected');
+    assert.equal(getHash(result), expected.json.hash, 'hash matches expected');
     assert.end();
   });
 }
 
 function getFixtures(name) {
-  var sourcePath = './' + name + '.source.js';
+  var sourcePath = path.join(__dirname, name + '.source.js');
+  var optsPath = path.join(__dirname, name + '.options.json');
   var jsonPath = path.join(__dirname, name + '.expected.json');
   var cssPath = path.join(__dirname, name + '.expected.css');
 
   return {
     source: require(sourcePath),
+    opts: moduleExists(optsPath) ? require(optsPath) : null,
     expected: {
       json: require(jsonPath),
       css: fs.readFileSync(cssPath, 'utf8')
     }
+  }
+}
+
+function moduleExists(name) {
+  try {
+    return Boolean(require.resolve(name));
+  } catch(e) {
+    return false;
   }
 }
