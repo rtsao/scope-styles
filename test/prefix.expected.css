@@ -1,0 +1,18 @@
+html[dir='rtr'] .foo_2yRvVh {
+  font-weight: bold
+}
+html[dir='rtr'] .bar_2yRvVh {
+  color: blue;
+  font-size: 15px;
+  background-color: #fff;
+  transition: width 500ms ease
+}
+html[dir='rtr'] .bar_2yRvVh:after {
+  color: green;
+  content: ''
+}
+@media (max-width: 600px) {
+html[dir='rtr'] .bar_2yRvVh {
+  color: orange
+}
+}

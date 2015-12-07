@@ -22,7 +22,8 @@
   "dependencies": {
     "base62": "^1.1.0",
     "es-symbol": "^1.1.2",
-    "string-hash": "^1.1.0"
+    "string-hash": "^1.1.0",
+    "xtend": "^4.0.1"
   },
   "devDependencies": {
     "coveralls": "^2.11.4",

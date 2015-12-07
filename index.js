@@ -1,5 +1,5 @@
 'use strict';
-
+var extend = require('xtend');
 var hashSuffix = require('./lib/hash');
 var dashify = require('./lib/inline-prop-to-css');
 var cssKey = require('./lib/css-symbol');
@@ -13,15 +13,20 @@ module.exports.getHash = require('./get-hash');
 function scopeStyles(config, obj) {
   if (arguments.length < 2) {
     obj = config;
-    config = {hash: hashSuffix(obj)};
+    config = {};
   }
-  var suffix = config.hash ? config.hash : '';
+  config = extend({hash: hashSuffix(obj), prefix: ''}, config);
+  config.hash = config.hash ? config.hash : '';
   var result = {};
   result[cssKey] = '';
-  result[hashKey] = suffix;
+  result[hashKey] = config.hash;
   return Object.keys(obj).reduce(function(acc, key) {
-    var scoped = processObj(key + suffix, obj[key]);
-    acc[key] = key + suffix;
+    var selector = key + config.hash;
+    var scoped = processObj({
+      selector: selector,
+      prefix: config.prefix
+    }, obj[key]);
+    acc[key] = selector;
     acc[cssKey] += scoped.join('\n') + '\n';
     return acc;
   }, result);
@@ -39,7 +44,10 @@ function processNested(name, nested, query) {
   return Object.keys(nested).map(function(key) {
     var val = nested[key];
     return isMediaQuery(key) ?
-      processObj(name, val, key) : processObj(name + key, val, query);
+      processObj(name, val, key) : processObj({
+        selector: name.selector + key,
+        prefix: name.prefix
+      }, val, query);
   });
 }
 
@@ -70,7 +78,8 @@ function stringify(name, props, query) {
 }
 
 function makeClass(name, props) {
-  return '.' + name + ' {\n' + inlineStyle(props) + '\n}';
+  return name.prefix + '.' + name.selector + ' {\n'
+    + inlineStyle(props) + '\n}';
 }
 
 function makeMediaQuery(name, props, query) {

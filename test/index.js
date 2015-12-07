@@ -12,7 +12,8 @@ var tests = [
   'basic',
   'nest-inside-media',
   'no-hash',
-  'override-hash'
+  'override-hash',
+  'prefix'
 ];
 
 tests.forEach(testFromName);
