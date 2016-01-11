@@ -54,7 +54,8 @@ function processNested(name, nested, query) {
 function partitionProps(propsObj) {
   return Object.keys(propsObj).reduce(function(acc, key) {
     var val = propsObj[key];
-    var dest = val && {
+    var dest = {
+      number: 'props',
       string: 'props',
       object: 'nested'
     }[typeof val];

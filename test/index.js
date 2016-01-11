@@ -10,6 +10,7 @@ var getHash = scopeStyles.getHash;
 
 var tests = [
   'basic',
+  'falsy-values',
   'nest-inside-media',
   'no-hash',
   'override-hash',
