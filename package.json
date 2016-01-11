@@ -1,6 +1,6 @@
 {
   "name": "scope-styles",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "converts inline style objects into scoped css",
   "keywords": [
     "css",
