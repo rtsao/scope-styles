@@ -87,6 +87,12 @@ document.body.appendChild(div2);
 </html>
 ```
 
+### see also
+* https://github.com/rtsao/scope-styles-inject
+* https://github.com/rtsao/scope-styles-injectify
+* https://github.com/rtsao/scope-styles-extractify
+
+
 [build-badge]: https://travis-ci.org/rtsao/scope-styles.svg?branch=master
 [build-href]: https://travis-ci.org/rtsao/scope-styles
 [coverage-badge]: https://coveralls.io/repos/rtsao/scope-styles/badge.svg?branch=master&service=github
