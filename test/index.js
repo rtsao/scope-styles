@@ -8,14 +8,21 @@ var scopeStyles = require('../');
 var getCss = scopeStyles.getCss;
 var getHash = scopeStyles.getHash;
 
-var tests = [
-  'basic',
-  'falsy-values',
-  'nest-inside-media',
-  'no-hash',
-  'override-hash',
-  'prefix'
-];
+var extensions = {
+  source: '.source.js',
+  opts: '.options.json',
+  json: '.expected.json',
+  css: '.expected.css'
+};
+
+var fixtureRegex = new RegExp(extensions.source + '$');
+var matchesFixture = fixtureRegex.test.bind(fixtureRegex);
+
+var tests = fs.readdirSync('test')
+  .filter(matchesFixture)
+  .map(function toName(file) {
+    return path.basename(file, extensions.source);
+  });
 
 tests.forEach(testFromName);
 
@@ -35,10 +42,10 @@ function runTest(name, source, expected, opts) {
 }
 
 function getFixtures(name) {
-  var sourcePath = path.join(__dirname, name + '.source.js');
-  var optsPath = path.join(__dirname, name + '.options.json');
-  var jsonPath = path.join(__dirname, name + '.expected.json');
-  var cssPath = path.join(__dirname, name + '.expected.css');
+  var sourcePath = fixturePath(name, extensions.source);
+  var optsPath = fixturePath(name, extensions.opts);
+  var jsonPath = fixturePath(name, extensions.json);
+  var cssPath = fixturePath(name, extensions.css);
 
   return {
     source: require(sourcePath),
@@ -56,4 +63,8 @@ function moduleExists(name) {
   } catch(e) {
     return false;
   }
+}
+
+function fixturePath(name, ext) {
+  return path.join(__dirname, name + ext);
 }
