@@ -91,6 +91,7 @@ document.body.appendChild(div2);
 * https://github.com/rtsao/scope-styles-inject
 * https://github.com/rtsao/scope-styles-injectify
 * https://github.com/rtsao/scope-styles-extractify
+* https://github.com/rtsao/csjs
 
 
 [build-badge]: https://travis-ci.org/rtsao/scope-styles.svg?branch=master
