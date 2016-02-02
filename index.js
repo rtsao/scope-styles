@@ -15,7 +15,7 @@ function scopeStyles(config, obj) {
     obj = config;
     config = {};
   }
-  config = extend({hash: hashSuffix(obj), prefix: ''}, config);
+  config = extend({hash: hashSuffix(obj), prefix: '.'}, config);
   config.hash = config.hash ? config.hash : '';
   var result = {};
   result[cssKey] = '';
@@ -79,7 +79,7 @@ function stringify(name, props, query) {
 }
 
 function makeClass(name, props) {
-  return name.prefix + '.' + name.selector + ' {\n'
+  return name.prefix + name.selector + ' {\n'
     + inlineStyle(props) + '\n}';
 }
 
